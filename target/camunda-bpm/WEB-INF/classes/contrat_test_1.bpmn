@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0mdpg71" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <bpmn:process id="Process_0qrho2w" name="contrat_test_1" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:extensionElements />
+    <bpmn:startEvent id="StartEvent_1" name="Début du processus">
+      <bpmn:extensionElements />
+      <bpmn:outgoing>Flow_1vkkx9q</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_0uo1b3w" name="Ajouter le contrat au base de données" camunda:class="com.camunda.bpm.camunda_bpm.delegate.SaveContratDelegate">
+      <bpmn:extensionElements>
+        <camunda:executionListener class="com.camunda.bpm.camunda_bpm.delegate.SaveContratDelegate" event="start" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0d1dor2</bpmn:incoming>
+      <bpmn:outgoing>Flow_05esldn</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:task id="Activity_1d32y8b" name="Approuver le contrat">
+      <bpmn:incoming>Flow_05esldn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1lw01bm</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_0z0rqe8">
+      <bpmn:incoming>Flow_1lw01bm</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1lw01bm" sourceRef="Activity_1d32y8b" targetRef="Event_0z0rqe8" />
+    <bpmn:sequenceFlow id="Flow_05esldn" sourceRef="Activity_0uo1b3w" targetRef="Activity_1d32y8b" />
+    <bpmn:sequenceFlow id="Flow_1vkkx9q" sourceRef="StartEvent_1" targetRef="Activity_0lx2ms6" />
+    <bpmn:sequenceFlow id="Flow_0d1dor2" sourceRef="Activity_0lx2ms6" targetRef="Activity_0uo1b3w" />
+    <bpmn:userTask id="Activity_0lx2ms6" name="Saisie les information contract" camunda:formKey="embedded:app:forms/contrat-form.html">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="client">${client}</camunda:outputParameter>
+          <camunda:outputParameter name="montant">${montant}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1vkkx9q</bpmn:incoming>
+      <bpmn:outgoing>Flow_0d1dor2</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0qrho2w">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="98" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="172" y="141" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ja5quo_di" bpmnElement="Activity_0uo1b3w">
+        <dc:Bounds x="440" y="76" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1d32y8b_di" bpmnElement="Activity_1d32y8b">
+        <dc:Bounds x="600" y="76" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0z0rqe8_di" bpmnElement="Event_0z0rqe8">
+        <dc:Bounds x="752" y="98" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_07sjplk_di" bpmnElement="Activity_0lx2ms6">
+        <dc:Bounds x="290" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1lw01bm_di" bpmnElement="Flow_1lw01bm">
+        <di:waypoint x="700" y="116" />
+        <di:waypoint x="752" y="116" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05esldn_di" bpmnElement="Flow_05esldn">
+        <di:waypoint x="540" y="116" />
+        <di:waypoint x="600" y="116" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vkkx9q_di" bpmnElement="Flow_1vkkx9q">
+        <di:waypoint x="215" y="116" />
+        <di:waypoint x="253" y="116" />
+        <di:waypoint x="253" y="117" />
+        <di:waypoint x="290" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d1dor2_di" bpmnElement="Flow_0d1dor2">
+        <di:waypoint x="390" y="117" />
+        <di:waypoint x="415" y="117" />
+        <di:waypoint x="415" y="116" />
+        <di:waypoint x="440" y="116" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

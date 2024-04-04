@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0me6qyn" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <bpmn:process id="Process_1v5pjel" name="request_process" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="Event_10r5ssm" name="Loan Request Received">
+      <bpmn:outgoing>Flow_08u5xyj</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_08u5xyj" sourceRef="Event_10r5ssm" targetRef="Activity_0f5nf0a" />
+    <bpmn:endEvent id="Event_1b2rfqf" name="Loan Request processed">
+      <bpmn:incoming>Flow_1wknfmx</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1wknfmx" sourceRef="Activity_0f5nf0a" targetRef="Event_1b2rfqf" />
+    <bpmn:userTask id="Activity_0f5nf0a" name="Check the request">
+      <bpmn:incoming>Flow_08u5xyj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wknfmx</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1v5pjel">
+      <bpmndi:BPMNShape id="Event_10r5ssm_di" bpmnElement="Event_10r5ssm">
+        <dc:Bounds x="172" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="155" y="145" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1b2rfqf_di" bpmnElement="Event_1b2rfqf">
+        <dc:Bounds x="412" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="395" y="145" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bxd5l4_di" bpmnElement="Activity_0f5nf0a">
+        <dc:Bounds x="260" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_08u5xyj_di" bpmnElement="Flow_08u5xyj">
+        <di:waypoint x="208" y="120" />
+        <di:waypoint x="260" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wknfmx_di" bpmnElement="Flow_1wknfmx">
+        <di:waypoint x="360" y="120" />
+        <di:waypoint x="412" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

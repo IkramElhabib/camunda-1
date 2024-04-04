@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulaire Client et Montant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contrat</h1>
+    <form role="form" name="form">
+        <label for="client">Client:</label>
+        <input cam-variable-type="text" id="client" cam-variable-name="client" cam-variable-value="ameni"><br><br> 
+
+       <label for="montant">Montant:</label>
+        <input cam-variable-type="number" id="montant" cam-variable-name="montant" cam-variable-value=10><br><br>
+
+       <!-- <button camunda:form-type="submit">Envoyer</button>-->
+    </form>
+    <script cam-script type="text/form-script">
+
+        camForm.on('form-loaded', function() {
+          // handle form loaded
+        });
+    
+        camForm.on('variables-fetched', function() {
+          // handle variables fetched
+        });
+    
+        camForm.on('variables-restored', function() {
+          // handle variables restored
+        });
+    
+        camForm.on('variables-applied', function() {
+          // handle variables applied
+
+        });
+    
+        camForm.on('store', function(evt) {
+          // handle store
+          // may prevent the store from being executed
+          evt.storePrevented = true;
+        });
+    
+        camForm.on('variables-stored', function() {
+          // handle variables stored
+        });
+    
+        camForm.on('submit', function(evt) {
+          // handle submit
+          // may prevent the submit from being executed:
+          evt.submitPrevented = true;
+        });
+    
+        camForm.on('submit-success', function() {
+          // handle submit-success
+        });
+    
+        camForm.on('submit-error', function(evt, res) {
+          // handle submit-error:
+          var error = res[0];
+        });
+    
+      </script>
+</body>
+</html>
