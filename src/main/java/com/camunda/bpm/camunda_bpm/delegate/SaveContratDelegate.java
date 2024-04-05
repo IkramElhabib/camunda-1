@@ -32,7 +32,12 @@ public class SaveContratDelegate implements JavaDelegate {
         PreparedStatement statement = connection.prepareStatement("INSERT INTO contrat (client, montant) VALUES (?, ?)");
         System.out.println("Insert done");
         statement.setString(1, client);
-        statement.setDouble(2, montant);
+        if (montant != null) {
+            statement.setDouble(2, montant);
+        } else {
+        	System.out.println("montant null");        
+        	statement.setDouble(2, 0.0);
+        }
         statement.executeUpdate();
 
         // Fermer la connexion à la base de données

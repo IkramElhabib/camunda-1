@@ -2,7 +2,7 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0mdpg71" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
   <bpmn:process id="Process_0qrho2w" name="contrat_test_1" isExecutable="true" camunda:historyTimeToLive="180">
     <bpmn:extensionElements />
-    <bpmn:startEvent id="StartEvent_1" name="Début du processus">
+    <bpmn:startEvent id="StartEvent_1" name="Début du processus" camunda:formKey="embedded:app:start-form.html">
       <bpmn:extensionElements />
       <bpmn:outgoing>Flow_1vkkx9q</bpmn:outgoing>
     </bpmn:startEvent>
@@ -27,6 +27,7 @@
     <bpmn:userTask id="Activity_0lx2ms6" name="Saisie les information contract" camunda:formKey="embedded:app:forms/contrat-form.html">
       <bpmn:extensionElements>
         <camunda:inputOutput>
+          <camunda:inputParameter name="montant">12</camunda:inputParameter>
           <camunda:outputParameter name="client">${client}</camunda:outputParameter>
           <camunda:outputParameter name="montant">${montant}</camunda:outputParameter>
         </camunda:inputOutput>

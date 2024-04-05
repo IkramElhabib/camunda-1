@@ -1,0 +1,48 @@
+<h3>Envoi d'un contrat</h3>
+
+    <form role="form" name="formContrat">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="client">Client:</label>
+                    <div class="controls">
+                        <input cam-variable-type="String" 
+                               cam-variable-name="client"
+                               id="client" 
+                                class="form-control"
+                                value="salma"><br><br> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="montant">Montant</label>
+                    <div class="controls">
+                      <input id="montant"
+                             required
+                             class="form-control"
+                             cam-variable-type="Double"
+                             cam-variable-name="montant"
+                             min="2" max="30"
+                             name="montant"
+                             type="number"/>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+
+    </form>
+    <script cam-script type="text/form-script">
+      camForm.on('submit', function(evt) {
+          // Récupérer les valeurs des champs du formulaire
+          var client = camForm.variableManager.variable('client').value;
+          var montant = camForm.variableManager.variable('montant').value;
+  
+          // Afficher les valeurs récupérées dans la console
+          console.log('Client:', client);
+          console.log('Montant:', montant);
+  
+          // Empêcher l'envoi du formulaire
+          evt.preventDefault();
+      });
+  </script>
+
